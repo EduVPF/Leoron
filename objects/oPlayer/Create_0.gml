@@ -1,0 +1,131 @@
+
+#region Variaveis
+global.camuflado = false;
+move_speed = 0;
+speed_max = 1.25;
+v_speed = 0;
+v_max = 3.5;
+grav = 0.2;
+chao = false;
+parede = false;
+vida = 3;
+energia_maxima = 250;
+energia_atual = 250;      
+poder = true;
+pulos = 1;
+chaves = 0;
+#endregion
+
+right = false
+left = false
+jump = false
+
+inputs = function()
+{
+    right = keyboard_check(ord("D"));
+	left = keyboard_check(ord("A"));
+	jump = keyboard_check(vk_space);
+	esc = keyboard_check(vk_escape);
+if (keyboard_check_pressed(ord("C")) && poder == true)
+    {
+		if (!place_meeting(x, y, oPlataformaD))
+        {
+            global.camuflado = !global.camuflado; 
+        }
+    }
+}
+
+movimento = function()
+
+	{
+		var lista_de_colisao = [oChao, oParede, oPorta, oPortaInicio];
+	move_speed = (right - left) * speed_max;
+
+		if (!chao)
+	{
+		
+		v_speed += grav;
+		if (v_speed < 0 && (keyboard_check(ord("A")))){
+		
+		image_xscale = -1
+		
+		}
+		else if(keyboard_check(ord("D"))){
+		image_xscale = 1
+		}
+			if (v_speed >= 0 && ((keyboard_check(ord("A")))))
+		{
+			
+			image_xscale = -1
+		}
+		if (v_speed < 0) 
+		{
+			
+			sprite_index = sPlayerPULO; 
+			
+		
+			
+		}
+		else 
+		{
+			
+			sprite_index = sPlayerCAI; 
+		}
+
+	}
+	else{
+	v_speed = 0
+	y = round(y)
+	sprite_index = sPlayer;
+	if(parede && keyboard_check(ord("A"))){
+		x = round(x)
+		y = round(y)
+		}
+
+		if (jump && pulos > 0){
+		v_speed = -v_max;
+	 audio_play_sound(sndjump, 1, false); 
+	}
+	
+		}
+		if (global.camuflado == true)
+	{
+		array_push(lista_de_colisao, oPlataformaD);
+	}
+	move_and_collide(move_speed, v_speed, lista_de_colisao, 24);
+	move_and_collide(0,v_speed, lista_de_colisao, 24);
+	
+	if (parede && v_speed > 0){
+	v_speed = 0.5;
+	sprite_index = sPlayerPAREDE;
+	}
+	if (parede && chao == true && v_speed > 0){
+	v_speed = 0;
+	sprite_index = sPlayer;
+	}
+}
+
+checa_chao = function()
+{
+	var pisou_chao = place_meeting(x, y + 1, oChao);
+	var pisou_magico = global.camuflado && place_meeting(x, y + 1, oPlataformaD);
+	chao = pisou_chao || pisou_magico;
+}
+
+
+checa_parede = function()
+{
+	var bateu_parede = place_meeting(x - 1, y, oParede) || place_meeting(x + 1, y, oParede);
+	var bateu_magico = global.camuflado && (place_meeting(x - 1, y, oPlataformaD) || place_meeting(x + 1, y, oPlataformaD));
+	parede = bateu_parede || bateu_magico;
+}
+
+var pegou_chave = instance_place(x, y, oChave);
+
+
+if (pegou_chave != noone)
+{
+    chaves += 1;                 
+    instance_destroy(pegou_chave); 
+}
+

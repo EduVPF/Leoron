@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"saul",
+  "audioGroupId":{
+    "name":"ag_musica",
+    "path":"audiogroups/ag_musica",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":130.32692,
+  "exportDir":"",
+  "name":"saul",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"saul.wav",
+  "volume":0.2,
+}
