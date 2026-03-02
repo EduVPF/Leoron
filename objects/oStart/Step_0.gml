@@ -9,6 +9,4 @@ room_goto(Tutorial);
 else {
 
 sprite_index = sStart;
-
-
 }
