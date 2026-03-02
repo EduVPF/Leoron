@@ -3,10 +3,10 @@ estado = "CUTSCENE";
 
 
 textos = [
-    "Ora, ora... um camaleao intrometido no meu castelo!",
-    "Voce achou que passaria pela minha floresta ileso?",
-    "Eu sou JUCA, o Imperador Sapo!",
-    "Prepare-se para virar patê de lagarto!"
+    "Ora, ora... um camaleão intrometido no meu castelo!",
+    "Você acha mesmo que conseguirá a MOSCA DOURADA????",
+    "Você tem alguma palavra final?",
+    "Não IMPORTA HAHAHAHAHA!"
 ];
 
 pagina = 0; 

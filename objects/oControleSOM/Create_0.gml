@@ -1,5 +1,3 @@
-
-
 audio_group_load(ag_musica);
 audio_group_load(ag_efeitos);
 

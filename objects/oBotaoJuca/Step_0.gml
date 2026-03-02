@@ -3,9 +3,8 @@ if (ativo == true)
     if (place_meeting(x, y - 1, oPlayer) || place_meeting(x, y, oPlayer))
     {
         ativo = false;
-        visible = false; // O botão some
-        
-        // Chama o espinho e mostra ele!
+        visible = false;
+audio_play_sound(sndbutton, 1, false);
         if (instance_exists(oEspinhoJuca))
         {
             oEspinhoJuca.x = x;
@@ -13,7 +12,7 @@ if (ativo == true)
             oEspinhoJuca.estado = "SUBINDO";
             oEspinhoJuca.image_index = 0; 
             
-            oEspinhoJuca.visible = true; // FAZ O ESPINHO APARECER AQUI!
+            oEspinhoJuca.visible = true;
         }
     }
 }

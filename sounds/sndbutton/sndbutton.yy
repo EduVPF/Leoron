@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"saul",
+  "%Name":"sndbutton",
   "audioGroupId":{
-    "name":"ag_musica",
-    "path":"audiogroups/ag_musica",
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.7040136,
+  "duration":0.27049887,
   "exportDir":"",
-  "name":"saul",
+  "name":"sndbutton",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"saul.wav",
-  "volume":0.2,
+  "soundFile":"sndbutton.wav",
+  "volume":1.0,
 }

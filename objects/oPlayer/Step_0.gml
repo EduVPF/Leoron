@@ -103,14 +103,13 @@ else
         tempo_invulneravel = 60;
 
         v_speed = -3; 
-
-        show_debug_message("AI! Leoron tomou dano! Vidas: " + string(vida));
+		
+		audio_play_sound(snddano, 1, false);
         
         if (vida <= 0)
         {
-            show_debug_message("LEORON MORREU! Reiniciando a fase...");
+			audio_play_sound(sndmorte, 1, false);
             room_restart(); 
         }
     }
 }
-show_debug_message(chaves);

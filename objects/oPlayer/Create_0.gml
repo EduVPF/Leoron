@@ -43,24 +43,19 @@ movimento = function()
 	var lista_de_colisao = [oChao, oParede, oPorta, oPortaInicio];
 	move_speed = (right - left) * speed_max;
 
-	// ==========================================
-	// 1. O CRONÔMETRO DO COYOTE
-	// ==========================================
+
 	if (chao == true) 
 	{
-		coyote_timer = coyote_max; // Enche o tempo!
+		coyote_timer = coyote_max;
 	}
 	else 
 	{
-		coyote_timer -= 1; // Esvazia enquanto cai
+		coyote_timer -= 1;
 	}
 
-	// ==========================================
-	// 2. A FÍSICA E ANIMAÇÕES
-	// ==========================================
 	if (!chao)
 	{
-		v_speed += grav; // Aplica gravidade
+		v_speed += grav;
 		
 		if (v_speed < 0 && (keyboard_check(ord("A")))){
 			image_xscale = -1;
@@ -80,8 +75,8 @@ movimento = function()
 	}
 	else
 	{
-		// Se está no chão, zera a gravidade e ajusta a sprite
-		if (v_speed >= 0) // Segurança para não cancelar o pulo!
+
+		if (v_speed >= 0)
 		{
 			v_speed = 0;
 			y = round(y);
@@ -95,19 +90,13 @@ movimento = function()
 		}
 	}
 
-	// ==========================================
-	// 3. O PULO COYOTE (LIVRE DO ELSE!)
-	// ==========================================
 	if (jump && pulos > 0 && coyote_timer > 0)
 	{
 		v_speed = -v_max;
-		coyote_timer = 0; // ZERA O TEMPO para ele não pular duas vezes no ar!
+		coyote_timer = 0;
 		audio_play_sound(sndjump, 1, false); 
 	}
 
-	// ==========================================
-	// 4. COLISÕES
-	// ==========================================
 	if (global.camuflado == true)
 	{
 		array_push(lista_de_colisao, oPlataformaD);
@@ -147,6 +136,7 @@ var pegou_chave = instance_place(x, y, oChave);
 
 if (pegou_chave != noone)
 {
+	
     chaves += 1;                 
     instance_destroy(pegou_chave); 
 }

@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"saul",
+  "%Name":"sndvelho1",
   "audioGroupId":{
-    "name":"ag_musica",
-    "path":"audiogroups/ag_musica",
+    "name":"ag_efeitos",
+    "path":"audiogroups/ag_efeitos",
   },
   "bitDepth":1,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.7040136,
+  "duration":4.546009,
   "exportDir":"",
-  "name":"saul",
+  "name":"sndvelho1",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"saul.wav",
-  "volume":0.2,
+  "soundFile":"sndvelho1.wav",
+  "volume":1.0,
 }

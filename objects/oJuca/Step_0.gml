@@ -1,15 +1,21 @@
 if (estado == "CUTSCENE")
 {
+    var texto_completo = textos[pagina];
+
+
     if (keyboard_check_pressed(ord("E")))
     {
-        var texto_completo = textos[pagina];
-        
         if (caracteres_escritos < string_length(texto_completo))
         {
+
             caracteres_escritos = string_length(texto_completo);
+            
+
+            audio_stop_sound(sndrei); 
         }
         else
         {
+
             pagina += 1;
             caracteres_escritos = 0; 
         }
@@ -20,16 +26,30 @@ if (estado == "CUTSCENE")
         estado = "PARADO"; 
         timer = 60; 
         sprite_index = sJuca;
+        audio_stop_sound(sndrei);
     }
     else
     {
+		
+        if (caracteres_escritos == 0)
+        {
+            audio_stop_sound(sndrei);
+            audio_play_sound(sndrei, 1, false);
+        }
+
         if (caracteres_escritos < string_length(textos[pagina]))
         {
             caracteres_escritos += velocidade_texto;
+            
+
+            if (caracteres_escritos >= string_length(textos[pagina]))
+            {
+
+                audio_stop_sound(sndrei);
+            }
         }
     }
 }
-
 
 else if (estado == "PARADO")
 {

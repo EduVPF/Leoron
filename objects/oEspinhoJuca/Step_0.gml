@@ -17,11 +17,12 @@ else if (estado == "ESPERANDO")
 
     if (place_meeting(x, y, oJuca))
     {
-
+		
         if (oJuca.estado != "MORTO")
         {
             oJuca.vida -= 1;
-            
+           var voz = audio_play_sound(snddano, 1, false);
+		   audio_sound_pitch(voz, 0.6);
             if (oJuca.vida > 0)
             {
 

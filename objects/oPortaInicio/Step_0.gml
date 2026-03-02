@@ -1,6 +1,6 @@
 if (abrindo == true)
 {
-
+audio_play_sound(sndporta, 1, false);
     if (y > y_inicial - limite_subida)
     {
 
@@ -19,7 +19,7 @@ if (abrindo == true)
     }
     else
     {
-
+	audio_stop_sound(sndporta);
         abrindo = false;
         
         mask_index = -1; 

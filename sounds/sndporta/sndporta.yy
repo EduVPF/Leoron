@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"saul",
+  "%Name":"sndporta",
   "audioGroupId":{
-    "name":"ag_musica",
-    "path":"audiogroups/ag_musica",
+    "name":"ag_efeitos",
+    "path":"audiogroups/ag_efeitos",
   },
   "bitDepth":1,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.7040136,
+  "duration":1.8801588,
   "exportDir":"",
-  "name":"saul",
+  "name":"sndporta",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"saul.wav",
-  "volume":0.2,
+  "soundFile":"sndporta.wav",
+  "volume":0.09,
 }

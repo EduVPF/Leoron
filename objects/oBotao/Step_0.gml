@@ -12,8 +12,9 @@ else
 
 if (global.camuflado == true)
 {
-    if (place_meeting(x, y - 1, oPlayer) || place_meeting(x, y, oPlayer))
+    if (place_meeting(x, y - 1, oPlayer) || place_meeting(x, y, oPlayer)) 
     {
+		
         var espinho_alvo = instance_nearest(x, y, oEspinhos);
         
         if (espinho_alvo != noone)
@@ -22,6 +23,12 @@ if (global.camuflado == true)
             espinho_alvo.feitico_quebrado = true; 
             espinho_alvo.caindo = true;
         }
+		
         sprite_index = sBotaoPressionado
     }
+}
+if (place_meeting(x, y - 1, oPlayer) && pressionado = false && global.camuflado == true){
+
+	pressionado = true
+	audio_play_sound(sndbutton, 1, false);
 }
