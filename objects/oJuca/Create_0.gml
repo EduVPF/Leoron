@@ -1,4 +1,4 @@
-vida = 3;
+vida = 4;
 estado = "CUTSCENE";
 
 
@@ -17,3 +17,4 @@ timer = 60;
 grav = 0.3;
 v_speed = 0;
 h_speed = 0;
+mask_index = sJuca;

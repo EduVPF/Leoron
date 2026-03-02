@@ -15,7 +15,7 @@ if (instance_exists(oPlayer))
         draw_set_color(c_yellow);
         
         
-        draw_text_transformed(x, y - 40, "[E]", 0.5, 0.5, 0);
+          draw_sprite(sBotaoE, 0, x, y - 40); 
         
 
         draw_set_halign(fa_left);

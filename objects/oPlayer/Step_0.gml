@@ -60,4 +60,57 @@ if (keyboard_check_pressed(ord("E")))
         }
     }
 }
+if (chao == true)
+{
+    coyote_timer = coyote_max; 
+}
+else 
+{
+    coyote_timer -= 1;
+}
+if (tempo_invulneravel > 0)
+{
+    tempo_invulneravel -= 1;
+    
+    if (tempo_invulneravel % 10 < 5) {
+        image_alpha = 0.3; 
+    } else {
+        image_alpha = 1;
+    }
+}
+else
+{
+    image_alpha = 1; 
+    
+    var tomou_dano = false;
+    var bateu_juca = instance_place(x, y, oJuca);
+    if (bateu_juca != noone)
+    {
+        if (bateu_juca.estado != "MORTO") 
+        {
+            tomou_dano = true;
+        }
+    }
+    var bateu_comum = instance_place(x, y, oEnemy);
+    if (bateu_comum != noone)
+    {
+        tomou_dano = true;
+    }
+    
+    if (tomou_dano == true)
+    {
+        vida -= 1;
+        tempo_invulneravel = 60;
+
+        v_speed = -3; 
+
+        show_debug_message("AI! Leoron tomou dano! Vidas: " + string(vida));
+        
+        if (vida <= 0)
+        {
+            show_debug_message("LEORON MORREU! Reiniciando a fase...");
+            room_restart(); 
+        }
+    }
+}
 show_debug_message(chaves);

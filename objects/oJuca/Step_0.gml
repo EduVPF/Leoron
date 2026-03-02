@@ -47,21 +47,33 @@ else if (estado == "PREPARANDO")
     if (timer <= 0)
     {
         estado = "PULANDO";
-        v_speed = -10; 
+        v_speed = -10;
         sprite_index = sJucaPulo;
 
-        if (instance_exists(oPlayer))
-        {
-            var distancia_x = oPlayer.x - x;
-            
-
-            h_speed = clamp(distancia_x / 40, -6, 6); 
-        }
     }
 }
 else if (estado == "PULANDO")
 {
+
+    if (instance_exists(oPlayer))
+    {
+        var distancia_x = oPlayer.x - x;
+
+        h_speed = clamp(distancia_x / 15, -6, 6); 
+    }
+
     v_speed += grav;
+
+
+    if (v_speed >= 0)
+    {
+        estado = "FLUTUANDO";
+
+        timer = 15; 
+
+        v_speed = 0;
+        h_speed = 0; 
+    }
 
 
     if (place_meeting(x + h_speed, y, oParede))
@@ -73,39 +85,78 @@ else if (estado == "PULANDO")
         h_speed = 0; 
     }
     x += h_speed;
-
-
     y += v_speed;
+}
 
-    if (v_speed > 0 && place_meeting(x, y, oChao))
+else if (estado == "FLUTUANDO")
+{
+    timer -= 1;
+
+    x = x + choose(-1, 0, 1);
+    
+    if (timer <= 0)
     {
+        estado = "CAINDO";
+        v_speed = 2;
+    }
+}
 
-        while (place_meeting(x, y, oChao))
+else if (estado == "CAINDO")
+{
+
+    v_speed += grav * 2; 
+	
+    if (place_meeting(x, y + v_speed, oChao))
+    {
+        while (!place_meeting(x, y + sign(v_speed), oChao))
         {
-            y -= 1;
+            y += sign(v_speed);
         }
         
         v_speed = 0;
-        h_speed = 0;
         estado = "ESMAGANDO";
-        timer = 50; 
-        sprite_index = sJucaCaindo;
-
-        if (place_meeting(x, y + 1, oBotaoJuca))
-        {
-
-            vida -= 1
-        }
+        timer = 30; 
+        sprite_index = sJucaCaindo; 
     }
+    else
+    {
+        y += v_speed;
+    }
+	
 }
 else if (estado == "ESMAGANDO")
 {
+
     timer -= 1;
+    
     if (timer <= 0)
     {
         estado = "PARADO";
-        timer = 60; 
-        sprite_index = sJuca; 
+        timer = 20;
+        sprite_index = sJuca;
     }
 }
+else if (estado == "MORTO")
+{
 
+    x = x_morte + choose(-4, 0, 4);
+    y = y_morte + choose(-4, 0, 4);
+    
+
+
+
+    timer_morte -= 1;
+    
+
+    if (timer_morte <= 0)
+    {
+
+        effect_create_above(ef_explosion, x, y, 2, c_orange);
+        
+
+        instance_create_layer(x, y - 20, "Instances", oMosca);
+
+        instance_destroy();
+		instance_destroy(oBotaoJuca);
+    }
+}
